@@ -1,0 +1,50 @@
+/target/
+!.mvn/wrapper/maven-wrapper.jar
+
+
+.classpath
+.project
+.settings/
+ 
+bin/
+gen/
+local.properties
+ 
+.DS_Store
+Thumbs.db
+ 
+*.bak
+*.tem
+
+*.temp
+### STS ###
+.apt_generated
+.classpath
+.factorypath
+.project
+.settings
+.springBeans
+.sts4-cache
+
+ # .gitignore_global
+ ####################################
+ ############# project about #############
+ ####################################
+ *.classpath           # 所有目录下或者后缀是.classpath
+ *.project             # 所有目录下或者后缀是.project
+ *.settings/*          # 所有目录下或者后缀是.settings，以及.settings下所有文件
+ *.gitignore           # 所有目录下或者后缀是.gitignore
+
+### IntelliJ IDEA ###
+.idea
+*.iws
+*.iml
+*.ipr
+
+### NetBeans ###
+/nbproject/private/
+/build/
+/nbbuild/
+/dist/
+/nbdist/
+/.nb-gradle/
