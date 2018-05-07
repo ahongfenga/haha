@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>问题表</title>
+		<#include "/header.html">
+</head>
+<body>
+<div id="rrapp" v-cloak>
+    <div v-show="showList">
+        <div class="grid-btn">
+        	<div class="form-group col-sm-2">
+				<input type="text" class="form-control" v-model="q.questionCode" @keyup.enter="query" placeholder="所属问卷">
+			</div>
+			<a class="btn btn-default" @click="query">查询</a>
+			<#if shiro.hasPermission("sys:questions:save")>
+            <a class="btn btn-primary" @click="add"><i class="fa fa-plus"></i>&nbsp;新增</a>
+			</#if>
+			<#if shiro.hasPermission("sys:questions:update")>
+            <a class="btn btn-primary" @click="update"><i class="fa fa-pencil-square-o"></i>&nbsp;修改</a>
+			</#if>
+			<#if shiro.hasPermission("sys:questions:delete")>
+            <a class="btn btn-primary" @click="del"><i class="fa fa-trash-o"></i>&nbsp;删除</a>
+			</#if>
+        </div>
+        <table id="jqGrid"></table>
+        <div id="jqGridPager"></div>
+    </div>
+
+    <div v-show="!showList" class="panel panel-default">
+        <div class="panel-heading">{{title}}</div>
+        <form class="form-horizontal">
+                      <div class="form-group">
+                        <div class="col-sm-2 control-label">问题标题</div>
+                        <div class="col-sm-10">
+                            <input type="text" class="form-control" v-model="questions.title" placeholder="问题标题"/>
+                        </div>
+                    </div>
+											                    <div class="form-group">
+                        <div class="col-sm-2 control-label">问题名</div>
+                        <div class="col-sm-10">
+                            <input type="text" class="form-control" v-model="questions.name" placeholder="问题名"/>
+                        </div>
+                    </div>
+											                    <div class="form-group">
+                        <div class="col-sm-2 control-label">所属问卷</div>
+                        <div class="col-sm-10">
+                            <input type="text" class="form-control" v-model="questions.questionCode" placeholder="所属问卷"/>
+                        </div>
+                    </div>
+											                    <div class="form-group">
+                        <div class="col-sm-2 control-label">问题分值</div>
+                        <div class="col-sm-10">
+                            <input type="text" class="form-control" v-model="questions.score" placeholder="问题分值"/>
+                        </div>
+                    </div>
+											                    <div class="form-group">
+                        <div class="col-sm-2 control-label">问题排序</div>
+                        <div class="col-sm-10">
+                            <input type="text" class="form-control" v-model="questions.orderNum" placeholder="问题排序"/>
+                        </div>
+                    </div>
+											                    <!--   <div class="form-group">
+                        <div class="col-sm-2 control-label">收录时间</div>
+                        <div class="col-sm-10">
+                            <input type="text" class="form-control" v-model="questions.dtInsert" placeholder="收录时间"/>
+                        </div>
+                    </div>
+											                 
+											                    <div class="form-group">
+                        <div class="col-sm-2 control-label">问题描述</div>
+                        <div class="col-sm-10">
+                            <input type="text" class="form-control" v-model="questions.describ" placeholder="问题描述"/>
+                        </div>
+                    </div>
+											                    <div class="form-group">
+                        <div class="col-sm-2 control-label"></div>
+                        <div class="col-sm-10">
+                            <input type="text" class="form-control" v-model="questions.userId" placeholder=""/>
+                        </div>
+                    </div>
+											                    <div class="form-group">
+                        <div class="col-sm-2 control-label">问题答案</div>
+                        <div class="col-sm-10">
+                            <input type="text" class="form-control" v-model="questions.questionAns" placeholder="问题答案"/>
+                        </div>
+                    </div>--> 
+											                    <div class="form-group">
+                        <div class="col-sm-2 control-label">类型排序</div>
+                        <div class="col-sm-10">
+                            <input type="text" class="form-control" v-model="questions.orderTitle" placeholder="类型排序"/>
+                        </div>
+                    </div>
+                    <div class="form-group">
+						<div class="col-sm-2 control-label">问题种类</div>
+						<label class="radio-inline">
+							<input type="radio" name="type" value="0" v-model="questions.type"/> 文本描述
+						</label>
+						<label class="radio-inline">
+							<input type="radio" name="type" value="1" v-model="questions.type"/> 数字频次
+						</label>
+						<label class="radio-inline">
+							<input type="radio" name="type" value="2" v-model="questions.type"/> 是或否
+						</label>
+						<!-- <label class="radio-inline">
+							<input type="radio" name="type" value="3" v-model="questions.type"/> 选择
+						</label> -->
+					</div>	                  
+							            <div class="form-group">
+                <div class="col-sm-2 control-label"></div>
+                <input type="button" class="btn btn-primary" @click="saveOrUpdate" value="确定"/>
+                &nbsp;&nbsp;<input type="button" class="btn btn-warning" @click="reload" value="返回"/>
+            </div>
+        </form>
+    </div>
+</div>
+
+<script src="${request.contextPath}/statics/js/modules/sys/questions.js?_${.now?long}"></script>
+</body>
+</html>
